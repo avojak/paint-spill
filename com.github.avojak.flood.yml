@@ -1,0 +1,20 @@
+app-id: com.github.avojak.flood
+
+runtime: io.elementary.Platform
+runtime-version: '6.1'
+sdk: io.elementary.Sdk
+
+command: com.github.avojak.flood
+
+finish-args:
+  - '--share=ipc'
+  - '--share=network'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+
+modules:
+  - name: flood
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .
