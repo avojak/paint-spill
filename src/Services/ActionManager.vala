@@ -22,12 +22,14 @@
  public class Flood.Services.ActionManager : GLib.Object {
 
     public const string ACTION_PREFIX = "win.";
+    public const string ACTION_NEW_GAME = "action_new_game";
+    public const string ACTION_HELP = "action_help";
     public const string ACTION_QUIT = "action_quit";
-    public const string ACTION_PREFERENCES = "action_preferences";
 
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
-        { ACTION_QUIT, action_quit },
-        { ACTION_PREFERENCES, action_preferences }
+        { ACTION_NEW_GAME, action_new_game },
+        { ACTION_HELP, action_help },
+        { ACTION_QUIT, action_quit }
     };
 
     private static Gee.MultiMap<string, string> accelerators;
@@ -46,8 +48,9 @@
 
     static construct {
         accelerators = new Gee.HashMultiMap<string, string> ();
+        accelerators.set (ACTION_NEW_GAME, "<Control>n");
+        accelerators.set (ACTION_HELP, "<Control>h");
         accelerators.set (ACTION_QUIT, "<Control>q");
-        accelerators.set (ACTION_PREFERENCES, "<Control><Shift>p");
     }
 
     construct {
@@ -66,12 +69,16 @@
         action_group.activate_action (action_name, parameter);
     }
 
-    private void action_quit () {
-        window.before_destroy ();
+    private void action_new_game () {
+        window.new_game ();
     }
 
-    private void action_preferences () {
-        window.show_preferences_dialog ();
+    private void action_help () {
+        window.show_rules ();
+    }
+
+    private void action_quit () {
+        window.before_destroy ();
     }
 
 }

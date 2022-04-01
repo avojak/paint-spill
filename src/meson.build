@@ -12,6 +12,7 @@ config_header = configure_file(
 application_files = files(
     join_paths('Layouts', 'MainLayout.vala'),
     join_paths('Models', 'Color.vala'),
+    join_paths('Models', 'Difficulty.vala'),
     join_paths('Services', 'ActionManager.vala'),
     join_paths('Widgets', 'ColorButton.vala'),
     join_paths('Widgets', 'ColorControlPanel.vala'),

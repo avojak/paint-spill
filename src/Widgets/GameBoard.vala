@@ -21,6 +21,8 @@
 
 public class Flood.Widgets.GameBoard : Gtk.Grid {
 
+    // TODO: Add some sort of border around the grid
+
     private int num_rows;
     private int num_cols;
 
@@ -76,12 +78,13 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         attach (square_grid, 0, 0);        
     }
 
-    public void flood (Flood.Models.Color new_color) {
+    public bool flood (Flood.Models.Color new_color) {
         current_color = new_color;
         foreach (int index in flooded_indices) {
             squares.get (index).color = new_color;
         }
         update_flooded_indices ();
+        return flooded_indices.size == (num_rows * num_cols);
     }
 
     // This is… not ideal… but it works!

@@ -87,8 +87,12 @@ public class Flood.Windows.MainWindow : Hdy.Window {
         Flood.Application.settings.set_int ("window-height", height);
     }
 
-    public void show_preferences_dialog () {
-        
+    public void new_game () {
+        layout.new_game ();
+    }
+
+    public void show_rules () {
+        // TODO
     }
 
 }
