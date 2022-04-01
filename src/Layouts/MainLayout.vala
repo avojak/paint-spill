@@ -59,7 +59,7 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         var base_grid = new Gtk.Grid () {
             expand = true
         };
-        base_grid.attach (control_panel, 0, 0, 1, 2);
+        base_grid.attach (control_panel, 0, 1, 1, 1);
         base_grid.attach (moves_grid, 1, 0, 1, 1);
         base_grid.attach (game_board, 1, 1, 1, 1);
 

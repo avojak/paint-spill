@@ -14,6 +14,12 @@ foreach i : icon_sizes
     )
 endforeach
 
+install_data(
+    join_paths('assets', 'icons', 'scalable', meson.project_name() + '.color-fill.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'actions'),
+    rename: '@0@.color-fill.svg'.format(application_id)
+)
+
 # Install the settings schema
 schema_path = '/com/github/avojak/flood/'
 schema_conf = configuration_data()

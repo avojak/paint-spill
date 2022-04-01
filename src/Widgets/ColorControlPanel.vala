@@ -77,13 +77,7 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
 
     private void update_button_sensitivity (Flood.Models.Color color) {
         foreach (var entry in buttons.entries) {
-            if (entry.key == color) {
-                entry.value.sensitive = false;
-                entry.value.get_style_context ().add_class ("disabled");
-            } else {
-                entry.value.sensitive = true;
-                entry.value.get_style_context ().remove_class ("disabled");
-            }
+            entry.value.set_enabled (entry.key != color);
         }
     }
 
