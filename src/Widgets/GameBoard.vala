@@ -25,11 +25,13 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
 
     private int num_rows;
     private int num_cols;
+    private bool is_game_in_progress;
 
     private Gee.List<Flood.Widgets.Square> squares;
     private Gee.List<int> flooded_indices;
 
     public Flood.Models.Color current_color { get; set; }
+    public int moves_remaining { get; set; }
 
     public GameBoard () {
         Object (
@@ -45,7 +47,13 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         initialize ();
     }
 
+    public void new_game (bool should_record_loss = false) {
+        // TODO
+    }
+
     private void initialize () {
+        // TODO: Load these from the preferences
+        moves_remaining = 25;
         num_rows = 14;
         num_cols = 14;
 
@@ -58,8 +66,8 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         current_color = squares.get (0).color;
         flooded_indices.add (0);
 
-        //  flood (current_color);
         update_flooded_indices ();
+        updated_move_count (moves_remaining);
     }
 
     private void setup_ui () {
@@ -78,17 +86,36 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         attach (square_grid, 0, 0);        
     }
 
-    public bool flood (Flood.Models.Color new_color) {
+    public void flood (Flood.Models.Color new_color) {
+        // If there wasn't a game in progress before, there is now
+        is_game_in_progress = true;
+
+        // Count the move
+        moves_remaining--;
+        updated_move_count (moves_remaining);
+
+        // Visually flood the squares
         current_color = new_color;
         foreach (int index in flooded_indices) {
             squares.get (index).color = new_color;
         }
-        update_flooded_indices ();
-        return flooded_indices.size == (num_rows * num_cols);
+        
+        // Update the list of flooded square indices and check win/loss conditions
+        if (update_flooded_indices ()) {
+            on_game_won ();
+            return;
+        }
+        if (moves_remaining == 0) {
+            on_game_lost ();
+            return;
+        }
+
+        // Write the game state
+        write_state ();
     }
 
     // This is… not ideal… but it works!
-    private void update_flooded_indices () {
+    private bool update_flooded_indices () {
         Gee.Set<int> new_indices = new Gee.HashSet<int> ();
         do {
             new_indices.clear ();
@@ -118,12 +145,16 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
             }
             flooded_indices.add_all (new_indices);
         } while (new_indices.size > 0);
+        return flooded_indices.size == (num_rows * num_cols);
     }
 
     private bool should_flood_neighbor (int? neighbor_index) {
         return neighbor_index != null && !flooded_indices.contains (neighbor_index) && (squares.get (neighbor_index).color == current_color);
     }
 
+    /*
+     * Convert the (row,col) game board coordinates to an index in the squares list
+     */
     private int? index_for_coord (int row, int col) {
         if (row < 0 || row >= num_rows || col < 0 || col >= num_cols) {
             return null;
@@ -132,7 +163,32 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
     }
 
     private bool should_restore_state () {
-        return false;
+        return Flood.Application.settings.get_boolean ("is-game-in-progress");
     }
+
+    private void write_state () {
+        Flood.Application.settings.set_boolean ("is-game-in-progress", is_game_in_progress);
+        if (is_game_in_progress) {
+            // TODO
+        } else {
+            // TODO
+        }
+    }
+
+    private void on_game_won () {
+        is_game_in_progress = false;
+        write_state ();
+        game_won ();
+    }
+
+    private void on_game_lost () {
+        is_game_in_progress = false;
+        write_state ();
+        game_lost ();
+    }
+
+    public signal void updated_move_count (int moves_remaining);
+    public signal void game_won ();
+    public signal void game_lost ();
 
 }

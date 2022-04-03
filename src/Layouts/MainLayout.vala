@@ -29,8 +29,6 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
     private Flood.Widgets.ColorControlPanel control_panel;
     private Gtk.Label moves_value;
 
-    private int moves_remaining;
-
     public MainLayout (Flood.Windows.MainWindow window) {
         Object (
             window: window
@@ -42,8 +40,6 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
     }
 
     private void initialize () {
-        moves_remaining = 25;
-
         setup_ui ();
     }
 
@@ -72,7 +68,7 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
             use_markup = true
         };
         moves_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
-        moves_value = new Gtk.Label (@"<b>$moves_remaining</b>") {
+        moves_value = new Gtk.Label (null) {
             use_markup = true
         };
         moves_value.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
@@ -80,6 +76,11 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         moves_grid.attach (moves_value, 1, 0);
 
         game_board = new Flood.Widgets.GameBoard ();
+        update_moves_remaining_label (game_board.moves_remaining);
+        game_board.updated_move_count.connect (update_moves_remaining_label);
+        game_board.game_won.connect (on_game_won);
+        game_board.game_lost.connect (on_game_lost);
+
         control_panel = new Flood.Widgets.ColorControlPanel ();
         control_panel.button_clicked.connect (on_color_button_clicked);
         control_panel.current_color = game_board.current_color;
@@ -87,9 +88,10 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         var base_grid = new Gtk.Grid () {
             expand = true
         };
-        base_grid.attach (control_panel, 0, 1, 1, 1);
-        base_grid.attach (moves_grid, 1, 0, 1, 1);
-        base_grid.attach (game_board, 1, 1, 1, 1);
+        base_grid.attach (endgame_revealer, 0, 0);
+        base_grid.attach (moves_grid, 0, 1);
+        base_grid.attach (game_board, 0, 2);
+        base_grid.attach (control_panel, 0, 3);
 
         attach (header_bar, 0, 0);
         attach (base_grid, 0, 1);
@@ -97,27 +99,36 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         show_all ();
     }
 
-    private void on_color_button_clicked (Flood.Models.Color color) {
-        // Flood the board
-        bool fully_flooded = game_board.flood (color);
-        // Game over?
-        if (fully_flooded) {
-            // TODO: Win!
-        }
-        // Decrement the move count
-        decrement_move_count ();
-        if (moves_remaining == 0) {
-            // TODO: Lose!
-        }
+    private void update_moves_remaining_label (int moves_remaining) {
+        moves_value.set_markup (@"<b>$moves_remaining</b>");
     }
 
-    private void decrement_move_count () {
-        moves_remaining--;
-        moves_value.set_markup (@"<b>$moves_remaining</b>");
+    private void on_color_button_clicked (Flood.Models.Color color) {
+        game_board.flood (color);
+    }
+
+    private void on_game_won () {
+        // Update the UI
+        status_label.set_text ("🎉️ You Win!");
+        endgame_revealer.set_reveal_child (true);
+
+        // Stop processing input to the control panel
+        control_panel.enabled = false;
+    }
+
+    private void on_game_lost () {
+        // Update the UI
+        status_label.set_text ("Game Over");
+        endgame_revealer.set_reveal_child (true);
+
+        // Stop processing input to the control panel
+        control_panel.enabled = false;
     }
 
     public void new_game () {
         // TODO
+        endgame_revealer.set_reveal_child (false);
+        control_panel.enabled = true;
     }
 
 }

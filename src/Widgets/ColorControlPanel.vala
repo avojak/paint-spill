@@ -33,6 +33,8 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
         }
     }
 
+    public bool enabled { get; set; }
+
     private Gee.Map<Flood.Models.Color, Flood.Widgets.ColorButton> buttons;
 
     public ColorControlPanel () {
@@ -40,7 +42,8 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
             expand: true,
             halign: Gtk.Align.CENTER,
             valign: Gtk.Align.CENTER,
-            margin: 8
+            margin: 8,
+            enabled: true
         );
     }
 
@@ -62,7 +65,7 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
         }
 
         // Add to the view
-        var button_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
+        var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 8);
         foreach (var entry in buttons.entries) {
             button_box.add (entry.value);
         }
@@ -71,6 +74,9 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
     }
 
     private void on_button_clicked (Flood.Models.Color color) {
+        if (!enabled) {
+            return;
+        }
         update_button_sensitivity (color);
         button_clicked (color);
     }
