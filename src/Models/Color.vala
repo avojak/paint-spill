@@ -99,6 +99,15 @@ public enum Flood.Models.Color {
         }
     }
 
+    public static Flood.Models.Color get_value_by_name (string name) {
+        GLib.EnumClass enumc = (GLib.EnumClass) typeof (Flood.Models.Color).class_ref ();
+        unowned EnumValue? eval = enumc.get_value_by_name (name);
+        if (eval == null) {
+            assert_not_reached ();
+        }
+        return (Flood.Models.Color) eval.value;
+    }
+
     public static Flood.Models.Color get_random () {
         return (Flood.Models.Color) GLib.Random.int_range (0, 6);
     }

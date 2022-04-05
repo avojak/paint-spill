@@ -23,13 +23,13 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
 
     private Flood.Models.Color _current_color;
     public Flood.Models.Color current_color {
-        get { 
-            return this._current_color; 
+        get {
+            return this._current_color;
         }
-        set { 
-            this._current_color = value; 
-            update_button_sensitivity (value); 
-            queue_draw (); 
+        set {
+            this._current_color = value;
+            update_button_sensitivity (value);
+            queue_draw ();
         }
     }
 

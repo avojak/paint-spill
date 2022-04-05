@@ -81,6 +81,19 @@ public enum Flood.Models.Difficulty {
         }
     }
 
+    public int get_square_size () {
+        switch (this) {
+            case EASY:
+                return 98;
+            case NORMAL:
+                return 49;
+            case HARD:
+                return 35;
+            default:
+                assert_not_reached ();
+        }
+    }
+
     public string get_short_name () {
         switch (this) {
             case EASY:

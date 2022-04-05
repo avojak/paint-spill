@@ -27,35 +27,24 @@ public class Flood.Widgets.Square : Gtk.DrawingArea {
         set { this._color = value; queue_draw (); }
     }
 
-    public Square (Flood.Models.Color color) {
+    public int size { get; construct; }
+
+    public Square (Flood.Models.Color color, int size = 32) {
         Object (
-            color: color
-            //  expand: true
-            //  width_request: 8,
-            //  height_request: 8
+            color: color,
+            size: size
         );
     }
 
     construct {
-        //  color = Flood.Models.Color.BLUEBERRY;
-        set_size_request (32, 32);
+        set_size_request (size, size);
         draw.connect (draw_fill_color);
     }
-
-    //  protected override bool draw (Cairo.Context ctx) {
-    //      base.draw (ctx);
-    //      ctx.save ();
-    //      draw_fill_color (ctx);
-    //      ctx.restore ();
-    //      return false;
-    //  }
 
     private bool draw_fill_color (Cairo.Context ctx) {
         // Determine location
         Gtk.Allocation allocation;
         get_allocation (out allocation);
-        //  int x = allocation.x;
-        //  int y = allocation.y;
         int width = allocation.width;
         int height = allocation.height;
 

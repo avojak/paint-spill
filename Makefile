@@ -3,6 +3,7 @@
 SHELL := /bin/bash
 
 .PHONY: all flatpak lint clean
+.DEFAULT_GOAL: flatpak
 
 all: flatpak
 

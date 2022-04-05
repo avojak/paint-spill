@@ -105,6 +105,10 @@ public class Flood.Widgets.HeaderBar : Hdy.HeaderBar {
         menu_button.popover = menu_popover;
 
         pack_end (menu_button);
+
+        gameplay_stats_menu_item.clicked.connect (() => {
+            gameplay_statistics_menu_item_clicked ();
+        });
     }
 
     private Gtk.Separator create_menu_separator () {
@@ -112,5 +116,7 @@ public class Flood.Widgets.HeaderBar : Hdy.HeaderBar {
             margin_top = 0
         };
     }
+
+    public signal void gameplay_statistics_menu_item_clicked ();
 
 }

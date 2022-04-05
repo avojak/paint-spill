@@ -57,6 +57,8 @@ public class Flood.Windows.MainWindow : Hdy.Window {
         this.delete_event.connect (before_destroy);
 
         show_app ();
+
+        set_focus (null);
     }
 
     private void restore_window_position () {
@@ -92,7 +94,7 @@ public class Flood.Windows.MainWindow : Hdy.Window {
     }
 
     public void show_rules () {
-        // TODO
+        layout.show_rules_dialog ();
     }
 
 }

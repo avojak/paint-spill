@@ -23,15 +23,16 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
 
     // TODO: Add some sort of border around the grid
 
+    public Flood.Models.Difficulty difficulty { get; set; }
+    public Flood.Models.Color current_color { get; set; }
+    public int moves_remaining { get; set; }
+
     private int num_rows;
     private int num_cols;
     private bool is_game_in_progress;
 
     private Gee.List<Flood.Widgets.Square> squares;
     private Gee.List<int> flooded_indices;
-
-    public Flood.Models.Color current_color { get; set; }
-    public int moves_remaining { get; set; }
 
     public GameBoard () {
         Object (
@@ -48,42 +49,73 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
     }
 
     public void new_game (bool should_record_loss = false) {
-        // TODO
+        // Current game is no longer in progress
+        Flood.Application.settings.set_boolean ("is-game-in-progress", false);
+        // Record a loss if we're interrupting a current game
+        if (should_record_loss) {
+            // TODO: record_loss ();
+        }
+        dispose_ui ();
+        initialize ();
+        show_all ();
+    }
+
+    public bool can_safely_start_new_game () {
+        return !is_game_in_progress;
     }
 
     private void initialize () {
         // TODO: Load these from the preferences
-        moves_remaining = 25;
-        num_rows = 14;
-        num_cols = 14;
+        difficulty = (Flood.Models.Difficulty) Flood.Application.settings.get_int ("difficulty");
+        moves_remaining = should_restore_state ()
+                ? Flood.Application.settings.get_int ("moves-remaining")
+                : difficulty.get_num_moves ();
+        num_rows = difficulty.get_num_rows ();
+        num_cols = difficulty.get_num_cols ();
 
         squares = new Gee.ArrayList<Flood.Widgets.Square> ();
         flooded_indices = new Gee.ArrayList<int> ();
 
-        setup_ui ();
+        setup_ui (should_restore_state ());
 
-        // Set the top left square as the first flooded square
+        // Set the top left square as the first flooded square (this is always true, even when restoring state)
         current_color = squares.get (0).color;
         flooded_indices.add (0);
-
         update_flooded_indices ();
+
         updated_move_count (moves_remaining);
+
+        // A game isn't considered "in-progress" until an action has been made by the user (i.e. clicking a new color to flood)
+        is_game_in_progress = should_restore_state ();
     }
 
-    private void setup_ui () {
+    private void setup_ui (bool should_restore_state) {
         var square_grid = new Gtk.Grid () {
             expand = true
         };
 
+        string[]? restored_state = should_restore_state ? Flood.Application.settings.get_string ("board-state").split (",") : null;
         for (int row = 0; row < num_rows; row++) {
             for (int col = 0; col < num_cols; col++) {
-                Flood.Widgets.Square square = new Flood.Widgets.Square (Flood.Models.Color.get_random ());
-                squares.insert (index_for_coord (row, col), square);
+                int index = index_for_coord (row, col);
+                Flood.Widgets.Square square;
+                if (restored_state == null) {
+                    square = new Flood.Widgets.Square (Flood.Models.Color.get_random (), difficulty.get_square_size ());
+                } else {
+                    square = new Flood.Widgets.Square (Flood.Models.Color.get_value_by_name (restored_state[index]), difficulty.get_square_size ());
+                }
+                squares.insert (index, square);
                 square_grid.attach (square, col, row);
             }
         }
 
-        attach (square_grid, 0, 0);        
+        attach (square_grid, 0, 0);
+    }
+
+    private void dispose_ui () {
+        foreach (var square in squares) {
+            square.dispose ();
+        }
     }
 
     public void flood (Flood.Models.Color new_color) {
@@ -99,7 +131,7 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         foreach (int index in flooded_indices) {
             squares.get (index).color = new_color;
         }
-        
+
         // Update the list of flooded square indices and check win/loss conditions
         if (update_flooded_indices ()) {
             on_game_won ();
@@ -169,20 +201,46 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
     private void write_state () {
         Flood.Application.settings.set_boolean ("is-game-in-progress", is_game_in_progress);
         if (is_game_in_progress) {
-            // TODO
+            Gee.List <string> square_colors = new Gee.ArrayList<string> ();
+            foreach (var square in squares) {
+                square_colors.add (square.color.to_string ());
+            }
+            var board_state = string.joinv (",", square_colors.to_array ());
+            Flood.Application.settings.set_string ("board-state", board_state);
+            Flood.Application.settings.set_int ("moves-remaining", moves_remaining);
         } else {
-            // TODO
+            Flood.Application.settings.set_string ("board-state", "");
+            Flood.Application.settings.set_int ("moves-remaining", 0);
         }
+    }
+
+    public void reset_gameplay_statistics () {
+        set_int_stat ("num-games-won", 0);
+        set_int_stat ("num-games-lost", 0);
+    }
+
+    private int get_int_stat (string name) {
+        return Flood.Application.settings.get_int (name);
+    }
+
+    private void set_int_stat (string name, int value) {
+        Flood.Application.settings.set_int (name, value);
+    }
+
+    private void increment_stat (string name) {
+        set_int_stat (name, get_int_stat (name) + 1);
     }
 
     private void on_game_won () {
         is_game_in_progress = false;
+        increment_stat ("num-games-won");
         write_state ();
         game_won ();
     }
 
     private void on_game_lost () {
         is_game_in_progress = false;
+        increment_stat ("num-games-lost");
         write_state ();
         game_lost ();
     }

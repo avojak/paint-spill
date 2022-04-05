@@ -25,8 +25,13 @@ set_setting () {
 echo
 echo "Resetting GSettings..."
 
-set_setting difficulty 0
+set_setting difficulty 1
+set_setting first-launch true
 set_setting is-game-in-progress false
+set_setting board-state ""
+set_setting moves-remaining 0
+set_setting num-games-won 0
+set_setting num-games-lost 0
 
 echo
 echo -e "\033[1;32mDone\033[0m"

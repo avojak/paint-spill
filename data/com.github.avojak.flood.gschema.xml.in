@@ -26,15 +26,40 @@
       <summary>The saved height of the window.</summary>
       <description>The saved height of the window.</description>
     </key>
+    <key name="first-launch" type="b">
+      <default>true</default>
+      <summary>Whether or not this is the first launch of the application</summary>
+      <description>Whether or not this is the first launch of the application</description>
+    </key>
     <key name="is-game-in-progress" type="b">
       <default>false</default>
       <summary>Whether or not there is currently a game in progress</summary>
       <description>Whether or not there is currently a game in progress</description>
     </key>
     <key name="difficulty" type="i">
-      <default>0</default>
+      <default>1</default>
       <summary>The difficulty setting</summary>
       <description>The difficulty setting</description>
+    </key>
+    <key name="board-state" type="s">
+      <default>""</default>
+      <summary>The saved state of the game board</summary>
+      <description>The saved state of the game board</description>
+    </key>
+    <key name="moves-remaining" type="i">
+      <default>0</default>
+      <summary>The saved state for the remaining moves</summary>
+      <description>The saved state for the remaining moves</description>
+    </key>
+    <key name="num-games-won" type="i">
+      <default>0</default>
+      <summary>The number of games that have been won</summary>
+      <description>The number of games that have been won</description>
+    </key>
+    <key name="num-games-lost" type="i">
+      <default>0</default>
+      <summary>The number of games that have been lost</summary>
+      <description>The number of games that have been lost</description>
     </key>
   </schema>
 </schemalist>

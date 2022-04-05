@@ -50,7 +50,7 @@ $ flatpak run --env=G_MESSAGES_DEBUG=all com.github.avojak.flood
 ### Updating Translations
 
 When new translatable strings are added, ensure that `po/POTFILES` contains a
-reference to the file with the translatable string.
+reference to each file with the translatable string.
 
 Update the `.pot` file which contains the translatable strings:
 
