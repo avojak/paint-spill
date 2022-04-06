@@ -19,22 +19,22 @@
  * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Widgets.GameBoard : Gtk.Grid {
+public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
 
     // TODO: Add some sort of border around the grid
 
-    public Flood.Models.Difficulty difficulty { get; set; }
+    public Flood.Models.Difficulty difficulty { get; construct set; }
     public Flood.Models.Color current_color { get; set; }
     public int moves_remaining { get; set; }
 
     private int num_rows;
     private int num_cols;
-    private bool is_game_in_progress;
+    public bool is_game_in_progress { get; set; }
 
-    private Gee.List<Flood.Widgets.Square> squares;
+    public Gee.List<Flood.Widgets.Square> squares { get; construct; }
     private Gee.List<int> flooded_indices;
 
-    public GameBoard () {
+    protected AbstractGameBoard () {
         Object (
             expand: true,
             orientation: Gtk.Orientation.VERTICAL,
@@ -45,36 +45,33 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
     }
 
     construct {
+        squares = new Gee.ArrayList<Flood.Widgets.Square> ();
+        flooded_indices = new Gee.ArrayList<int> ();
+
         initialize ();
     }
 
     public void new_game (bool should_record_loss = false) {
-        // Current game is no longer in progress
-        Flood.Application.settings.set_boolean ("is-game-in-progress", false);
-        // Record a loss if we're interrupting a current game
-        if (should_record_loss) {
-            // TODO: record_loss ();
-        }
+        on_new_game (should_record_loss);
         dispose_ui ();
         initialize ();
         show_all ();
     }
+
+    protected abstract void on_new_game (bool should_record_loss);
 
     public bool can_safely_start_new_game () {
         return !is_game_in_progress;
     }
 
     private void initialize () {
-        // TODO: Load these from the preferences
-        difficulty = (Flood.Models.Difficulty) Flood.Application.settings.get_int ("difficulty");
+        flooded_indices.clear ();
+        
         moves_remaining = should_restore_state ()
                 ? Flood.Application.settings.get_int ("moves-remaining")
                 : difficulty.get_num_moves ();
         num_rows = difficulty.get_num_rows ();
         num_cols = difficulty.get_num_cols ();
-
-        squares = new Gee.ArrayList<Flood.Widgets.Square> ();
-        flooded_indices = new Gee.ArrayList<int> ();
 
         setup_ui (should_restore_state ());
 
@@ -91,7 +88,10 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
 
     private void setup_ui (bool should_restore_state) {
         var square_grid = new Gtk.Grid () {
-            expand = true
+            expand = true,
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER,
+            margin = 8
         };
 
         string[]? restored_state = should_restore_state ? Flood.Application.settings.get_string ("board-state").split (",") : null;
@@ -194,53 +194,20 @@ public class Flood.Widgets.GameBoard : Gtk.Grid {
         return col + (row * num_cols);
     }
 
-    private bool should_restore_state () {
-        return Flood.Application.settings.get_boolean ("is-game-in-progress");
-    }
+    protected abstract bool should_restore_state ();
 
-    private void write_state () {
-        Flood.Application.settings.set_boolean ("is-game-in-progress", is_game_in_progress);
-        if (is_game_in_progress) {
-            Gee.List <string> square_colors = new Gee.ArrayList<string> ();
-            foreach (var square in squares) {
-                square_colors.add (square.color.to_string ());
-            }
-            var board_state = string.joinv (",", square_colors.to_array ());
-            Flood.Application.settings.set_string ("board-state", board_state);
-            Flood.Application.settings.set_int ("moves-remaining", moves_remaining);
-        } else {
-            Flood.Application.settings.set_string ("board-state", "");
-            Flood.Application.settings.set_int ("moves-remaining", 0);
-        }
-    }
+    protected abstract void write_state ();
 
-    public void reset_gameplay_statistics () {
-        set_int_stat ("num-games-won", 0);
-        set_int_stat ("num-games-lost", 0);
-    }
-
-    private int get_int_stat (string name) {
-        return Flood.Application.settings.get_int (name);
-    }
-
-    private void set_int_stat (string name, int value) {
-        Flood.Application.settings.set_int (name, value);
-    }
-
-    private void increment_stat (string name) {
-        set_int_stat (name, get_int_stat (name) + 1);
-    }
+    public abstract void reset_gameplay_statistics ();
 
     private void on_game_won () {
         is_game_in_progress = false;
-        increment_stat ("num-games-won");
         write_state ();
         game_won ();
     }
 
     private void on_game_lost () {
         is_game_in_progress = false;
-        increment_stat ("num-games-lost");
         write_state ();
         game_lost ();
     }

@@ -31,7 +31,7 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
 
     private Gtk.Revealer endgame_revealer;
     private Gtk.Label status_label;
-    private Flood.Widgets.GameBoard game_board;
+    private Flood.Widgets.AbstractGameBoard game_board;
     private Flood.Widgets.ColorControlPanel control_panel;
     private Gtk.Label moves_value;
 
@@ -68,7 +68,7 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         endgame_revealer.add (status_label);
 
         var moves_grid = new Gtk.Grid () {
-            hexpand = true,
+            expand = true,
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.END,
             column_spacing = 8
@@ -84,7 +84,7 @@ public class Flood.Layouts.MainLayout : Gtk.Grid {
         moves_grid.attach (moves_label, 0, 0);
         moves_grid.attach (moves_value, 1, 0);
 
-        game_board = new Flood.Widgets.GameBoard ();
+        game_board = new Flood.Widgets.DefaultGameBoard ();
         update_moves_remaining_label (game_board.moves_remaining);
         game_board.updated_move_count.connect (update_moves_remaining_label);
         game_board.game_won.connect (on_game_won);

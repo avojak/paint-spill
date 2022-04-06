@@ -34,28 +34,30 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
     }
 
     public bool enabled { get; set; }
+    public int button_size { get; construct; }
 
     private Gee.Map<Flood.Models.Color, Flood.Widgets.ColorButton> buttons;
 
-    public ColorControlPanel () {
+    public ColorControlPanel (int button_size = 64) {
         Object (
             expand: true,
             halign: Gtk.Align.CENTER,
             valign: Gtk.Align.CENTER,
             margin: 8,
-            enabled: true
+            enabled: true,
+            button_size: button_size
         );
     }
 
     construct {
         // Create the buttons
         buttons = new Gee.HashMap<Flood.Models.Color, Flood.Widgets.ColorButton> ();
-        buttons.set (Flood.Models.Color.GRAPE, new Flood.Widgets.ColorButton (Flood.Models.Color.GRAPE));
-        buttons.set (Flood.Models.Color.BLUEBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.BLUEBERRY));
-        buttons.set (Flood.Models.Color.LIME, new Flood.Widgets.ColorButton (Flood.Models.Color.LIME));
-        buttons.set (Flood.Models.Color.BANANA, new Flood.Widgets.ColorButton (Flood.Models.Color.BANANA));
-        buttons.set (Flood.Models.Color.STRAWBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.STRAWBERRY));
-        buttons.set (Flood.Models.Color.BUBBLEGUM, new Flood.Widgets.ColorButton (Flood.Models.Color.BUBBLEGUM));
+        buttons.set (Flood.Models.Color.GRAPE, new Flood.Widgets.ColorButton (Flood.Models.Color.GRAPE, button_size));
+        buttons.set (Flood.Models.Color.BLUEBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.BLUEBERRY, button_size));
+        buttons.set (Flood.Models.Color.LIME, new Flood.Widgets.ColorButton (Flood.Models.Color.LIME, button_size));
+        buttons.set (Flood.Models.Color.BANANA, new Flood.Widgets.ColorButton (Flood.Models.Color.BANANA, button_size));
+        buttons.set (Flood.Models.Color.STRAWBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.STRAWBERRY, button_size));
+        buttons.set (Flood.Models.Color.BUBBLEGUM, new Flood.Widgets.ColorButton (Flood.Models.Color.BUBBLEGUM, button_size));
 
         // Connect to signals
         foreach (var entry in buttons.entries) {

@@ -23,17 +23,18 @@
 
     construct {
         var explanation_grid = create_grid ();
-        explanation_grid.attach (new Gtk.Label ("Figure out the word before your guesses run out!"), 0, 0);
-        explanation_grid.attach (new Gtk.Label ("As you type, the squares on the board will be filled in."), 0, 1);
+        explanation_grid.attach (create_label (_("Flood the board with all the same color paint before running out of moves!"), Granite.STYLE_CLASS_H4_LABEL), 0, 0);
+        explanation_grid.attach (create_label (_("Click the round paint buttons to spill a new paint color onto the board starting in the top-left corner.")), 0, 1);
+        explanation_grid.attach (create_label (_("Newly adjacent squares of the same color add to the total flooded space.")), 0, 2);
 
-        // Explain the keys
-        var accelerator_grid = create_grid ();
-        accelerator_grid.attach (new Granite.AccelLabel ("Undo a typed letter", "Delete"), 0, 2);
-        accelerator_grid.attach (new Granite.AccelLabel ("Submit your guess", "Return"), 0, 3);
+        //  // Explain the keys
+        //  var accelerator_grid = create_grid ();
+        //  accelerator_grid.attach (new Granite.AccelLabel ("Undo a typed letter", "Delete"), 0, 2);
+        //  accelerator_grid.attach (new Granite.AccelLabel ("Submit your guess", "Return"), 0, 3);
 
         // Explain the color changes
-        var square_colors_grid = create_grid ();
-        square_colors_grid.attach (create_label ("The letter is in the correct position."), 0, 0);
+        //  var square_colors_grid = create_grid ();
+        //  square_colors_grid.attach (create_label ("The letter is in the correct position."), 0, 0);
         //  square_colors_grid.attach (new Flood.Widgets.Square () {
         //      letter = 'A',
         //      state = Flood.Models.State.CORRECT
@@ -49,20 +50,15 @@
         //      state = Flood.Models.State.CLOSE
         //  }, 1, 2);
 
-        var key_colors_grid = create_grid ();
-        key_colors_grid.attach (new Gtk.Label ("The keys on the keyboard at the bottom of the screen will similarly change colors to help you keep track of which letters have been used.") {
-            justify = Gtk.Justification.CENTER,
-            halign = Gtk.Align.CENTER,
-            max_width_chars = 45,
-            wrap = true,
-            wrap_mode = Pango.WrapMode.WORD
-        }, 0, 0, 3, 1);
+        var try_it_out_grid = create_grid ();
+        try_it_out_grid.attach (create_label (_("Try it out:"), Granite.STYLE_CLASS_H4_LABEL), 0, 0);
 
         attach (explanation_grid, 0, 0);
-        attach (accelerator_grid, 0, 1);
-        attach (create_separator (), 0, 2);
-        attach (square_colors_grid, 0, 3);
-        attach (key_colors_grid, 0, 4);
+        //  attach (accelerator_grid, 0, 1);
+        attach (create_separator (), 0, 1);
+        attach (try_it_out_grid, 0, 2);
+        attach (new Flood.Widgets.DemoGame (), 0, 3);
+        attach (create_separator (), 0, 4);
     }
 
     private Gtk.Grid create_grid () {
@@ -77,8 +73,8 @@
         };
     }
 
-    private Gtk.Label create_label (string text) {
-        return new Gtk.Label (text) {
+    private Gtk.Label create_label (string text, string? style_class = null) {
+        var label = new Gtk.Label (text) {
             justify = Gtk.Justification.CENTER,
             halign = Gtk.Align.CENTER,
             max_width_chars = 35,
@@ -86,6 +82,10 @@
             wrap_mode = Pango.WrapMode.WORD,
             hexpand = true
         };
+        if (style_class != null) {
+            label.get_style_context ().add_class (style_class);
+        }
+        return label;
     }
 
     private Gtk.Separator create_separator () {

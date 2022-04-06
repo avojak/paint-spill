@@ -23,7 +23,8 @@ public enum Flood.Models.Difficulty {
 
     EASY,
     NORMAL,
-    HARD;
+    HARD,
+    DEMO;
 
     public string get_display_string () {
         switch (this) {
@@ -33,6 +34,8 @@ public enum Flood.Models.Difficulty {
                 return _("Normal");
             case HARD:
                 return _("Hard");
+            case DEMO:
+                return _("Demo");
             default:
                 assert_not_reached ();
         }
@@ -50,6 +53,8 @@ public enum Flood.Models.Difficulty {
                 return 10;
             case HARD:
                 return 14;
+            case DEMO:
+                return 5;
             default:
                 assert_not_reached ();
         }
@@ -63,6 +68,8 @@ public enum Flood.Models.Difficulty {
                 return 10;
             case HARD:
                 return 14;
+            case DEMO:
+                return 5;
             default:
                 assert_not_reached ();
         }
@@ -71,11 +78,13 @@ public enum Flood.Models.Difficulty {
     public int get_num_moves () {
         switch (this) {
             case EASY:
-                return 12;
+                return 15;
             case NORMAL:
                 return 20;
             case HARD:
                 return 25;
+            case DEMO:
+                return 0;
             default:
                 assert_not_reached ();
         }
@@ -89,6 +98,8 @@ public enum Flood.Models.Difficulty {
                 return 49;
             case HARD:
                 return 35;
+            case DEMO:
+                return 32;
             default:
                 assert_not_reached ();
         }
@@ -102,6 +113,8 @@ public enum Flood.Models.Difficulty {
                 return "NORMAL";
             case HARD:
                 return "HARD";
+            case DEMO:
+                return "DEMO";
             default:
                 assert_not_reached ();
         }
@@ -115,6 +128,8 @@ public enum Flood.Models.Difficulty {
                 return NORMAL;
             case "HARD":
                 return HARD;
+            case "DEMO":
+                return DEMO;
             default:
                 assert_not_reached ();
         }
