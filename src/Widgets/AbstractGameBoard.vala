@@ -66,7 +66,7 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
 
     private void initialize () {
         flooded_indices.clear ();
-        
+
         moves_remaining = should_restore_state ()
                 ? Flood.Application.settings.get_int ("moves-remaining")
                 : difficulty.get_num_moves ();
