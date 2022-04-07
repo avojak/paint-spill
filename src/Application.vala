@@ -1,29 +1,13 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Application : Gtk.Application {
+public class PaintSpill.Application : Gtk.Application {
 
     public static GLib.Settings settings;
 
-    private Flood.Windows.MainWindow main_window;
+    private PaintSpill.Windows.MainWindow main_window;
 
     public Application () {
         Object (
@@ -45,11 +29,13 @@ public class Flood.Application : Gtk.Application {
     }
 
     private void add_new_window () {
-        this.main_window = new Flood.Windows.MainWindow (this);
-        main_window.destroy.connect (() => {
-            main_window = null;
-        });
-        this.add_window (main_window);
+        if (main_window == null) {
+            main_window = new PaintSpill.Windows.MainWindow (this);
+            main_window.destroy.connect (() => {
+                main_window = null;
+            });
+            add_window (main_window);
+        }
     }
 
     protected override void activate () {
@@ -83,7 +69,7 @@ public class Flood.Application : Gtk.Application {
     }
 
     public static int main (string[] args) {
-        var app = new Flood.Application ();
+        var app = new PaintSpill.Application ();
         return app.run (args);
     }
 

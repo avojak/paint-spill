@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Andrew Vojak <andrew.vojak@gmail.com> -->
+<component type="desktop">
+  <id>@appid@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>@name@</name>
+  <summary>The color-filling puzzle game</summary>
+  <description>
+    <p>Fill the board with all the same color!</p>
+    <ul>
+      <li>Three difficulty levels</li>
+      <li>"Zen Mode" for relaxing and uninterrupted play</li>
+      <li>Need a break? Close the game and automatically pick back up where you left off</li>
+    </ul>
+  </description>
+  <provides>
+    <binary>@appid@</binary>
+  </provides>
+  <!-- <releases>
+    TODO
+  </releases> -->
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/avojak/paint-spill/master/data/assets/screenshots/paint-spill-screenshot-01.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/avojak/paint-spill/master/data/assets/screenshots/paint-spill-screenshot-02.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/avojak/paint-spill/master/data/assets/screenshots/paint-spill-screenshot-03.png</image>
+    </screenshot>
+  </screenshots>
+  <developer_name>Andrew Vojak</developer_name>
+  <launchable type="desktop-id">@appid@.desktop</launchable>
+  <url type="homepage">https://github.com/avojak/paint-spill</url>
+  <url type="bugtracker">https://github.com/avojak/paint-spill/issues</url>
+  <url type="help">https://github.com/avojak/paint-spill/issues</url>
+  <update_contact>andrew.vojak@gmail.com</update_contact>
+  <content_rating type="oars-1.1" />
+  <custom>
+    <value key="x-appcenter-color-primary">#fff</value>
+    <value key="x-appcenter-color-primary-text">#333</value>
+    <value key="x-appcenter-suggested-price">1</value>
+    <value key="x-appcenter-stripe"><!-- TODO --></value>
+  </custom>
+</component>

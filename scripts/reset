@@ -9,7 +9,7 @@ then
     exit 1
 fi
 
-APP_ID=com.github.avojak.flood
+APP_ID=com.github.avojak.paint-spill
 GSETTINGS_ID=$APP_ID
 GSETTINGS_PATH=$APP_ID
 
@@ -25,6 +25,8 @@ set_setting () {
 echo
 echo "Resetting GSettings..."
 
+set_setting pos-x 360
+set_setting pos-y 360
 set_setting difficulty 1
 set_setting first-launch true
 set_setting is-game-in-progress false

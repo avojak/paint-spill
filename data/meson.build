@@ -21,7 +21,7 @@ install_data(
 )
 
 # Install the settings schema
-schema_path = '/com/github/avojak/flood/'
+schema_path = '/com/github/avojak/paint-spill/'
 schema_conf = configuration_data()
 schema_conf.set('appid', application_id)
 schema_conf.set('schema-path', schema_path)

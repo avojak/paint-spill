@@ -16,16 +16,6 @@
       <summary>The saved vertical position width of the window.</summary>
       <description>The saved vertical position of the window.</description>
     </key>
-    <key name="window-width" type="i">
-      <default>300</default>
-      <summary>The saved width of the window.</summary>
-      <description>The saved width of the window.</description>
-    </key>
-    <key name="window-height" type="i">
-      <default>200</default>
-      <summary>The saved height of the window.</summary>
-      <description>The saved height of the window.</description>
-    </key>
     <key name="first-launch" type="b">
       <default>true</default>
       <summary>Whether or not this is the first launch of the application</summary>
@@ -40,6 +30,11 @@
       <default>1</default>
       <summary>The difficulty setting</summary>
       <description>The difficulty setting</description>
+    </key>
+    <key name="zen-mode" type="b">
+      <default>false</default>
+      <summary>Whether or not zen mode is enabled</summary>
+      <description>Whether or not zen mode is enabled</description>
     </key>
     <key name="board-state" type="s">
       <default>""</default>

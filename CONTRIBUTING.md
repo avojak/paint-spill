@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for thinking about contributing to Flood! If you're unsure about anything, know that you are always welcome to submit an issue or pull request on any topic.
+Thank you for thinking about contributing to Paint Spill! If you're unsure about anything, know that you are always welcome to submit an issue or pull request on any topic.
 
 ## Code of Conduct
 

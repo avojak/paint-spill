@@ -1,28 +1,12 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
+public class PaintSpill.Widgets.ColorControlPanel : Gtk.Grid {
 
-    private Flood.Models.Color _current_color;
-    public Flood.Models.Color current_color {
+    private PaintSpill.Models.Color _current_color;
+    public PaintSpill.Models.Color current_color {
         get {
             return this._current_color;
         }
@@ -36,7 +20,7 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
     public bool enabled { get; set; }
     public int button_size { get; construct; }
 
-    private Gee.Map<Flood.Models.Color, Flood.Widgets.ColorButton> buttons;
+    private Gee.Map<PaintSpill.Models.Color, PaintSpill.Widgets.ColorButton> buttons;
 
     public ColorControlPanel (int button_size = 64) {
         Object (
@@ -51,13 +35,13 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
 
     construct {
         // Create the buttons
-        buttons = new Gee.HashMap<Flood.Models.Color, Flood.Widgets.ColorButton> ();
-        buttons.set (Flood.Models.Color.GRAPE, new Flood.Widgets.ColorButton (Flood.Models.Color.GRAPE, button_size));
-        buttons.set (Flood.Models.Color.BLUEBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.BLUEBERRY, button_size));
-        buttons.set (Flood.Models.Color.LIME, new Flood.Widgets.ColorButton (Flood.Models.Color.LIME, button_size));
-        buttons.set (Flood.Models.Color.BANANA, new Flood.Widgets.ColorButton (Flood.Models.Color.BANANA, button_size));
-        buttons.set (Flood.Models.Color.STRAWBERRY, new Flood.Widgets.ColorButton (Flood.Models.Color.STRAWBERRY, button_size));
-        buttons.set (Flood.Models.Color.BUBBLEGUM, new Flood.Widgets.ColorButton (Flood.Models.Color.BUBBLEGUM, button_size));
+        buttons = new Gee.HashMap<PaintSpill.Models.Color, PaintSpill.Widgets.ColorButton> ();
+        buttons.set (PaintSpill.Models.Color.GRAPE, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.GRAPE, button_size));
+        buttons.set (PaintSpill.Models.Color.BLUEBERRY, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.BLUEBERRY, button_size));
+        buttons.set (PaintSpill.Models.Color.LIME, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.LIME, button_size));
+        buttons.set (PaintSpill.Models.Color.BANANA, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.BANANA, button_size));
+        buttons.set (PaintSpill.Models.Color.STRAWBERRY, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.STRAWBERRY, button_size));
+        buttons.set (PaintSpill.Models.Color.BUBBLEGUM, new PaintSpill.Widgets.ColorButton (PaintSpill.Models.Color.BUBBLEGUM, button_size));
 
         // Connect to signals
         foreach (var entry in buttons.entries) {
@@ -75,7 +59,7 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
         attach (button_box, 0, 0);
     }
 
-    private void on_button_clicked (Flood.Models.Color color) {
+    private void on_button_clicked (PaintSpill.Models.Color color) {
         if (!enabled) {
             return;
         }
@@ -83,12 +67,12 @@ public class Flood.Widgets.ColorControlPanel : Gtk.Grid {
         button_clicked (color);
     }
 
-    private void update_button_sensitivity (Flood.Models.Color color) {
+    private void update_button_sensitivity (PaintSpill.Models.Color color) {
         foreach (var entry in buttons.entries) {
             entry.value.set_enabled (entry.key != color);
         }
     }
 
-    public signal void button_clicked (Flood.Models.Color color);
+    public signal void button_clicked (PaintSpill.Models.Color color);
 
 }

@@ -1,25 +1,9 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
- public class Flood.Services.ActionManager : GLib.Object {
+ public class PaintSpill.Services.ActionManager : GLib.Object {
 
     public const string ACTION_PREFIX = "win.";
     public const string ACTION_NEW_GAME = "action_new_game";
@@ -34,12 +18,12 @@
 
     private static Gee.MultiMap<string, string> accelerators;
 
-    public unowned Flood.Application application { get; construct; }
-    public unowned Flood.Windows.MainWindow window { get; construct; }
+    public unowned PaintSpill.Application application { get; construct; }
+    public unowned PaintSpill.Windows.MainWindow window { get; construct; }
 
     private GLib.SimpleActionGroup action_group;
 
-    public ActionManager (Flood.Application application, Flood.Windows.MainWindow window) {
+    public ActionManager (PaintSpill.Application application, PaintSpill.Windows.MainWindow window) {
         Object (
             application: application,
             window: window

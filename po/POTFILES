@@ -1,0 +1,16 @@
+src/Layouts/MainLayout.vala
+
+src/Models/Difficulty.vala
+
+src/Widgets/Dialogs/DefeatDialog.vala
+src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala
+src/Widgets/Dialogs/GameplayStatisticsDialog.vala
+src/Widgets/Dialogs/NewGameConfirmationDialog.vala
+src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala
+src/Widgets/Dialogs/RulesDialog.vala
+src/Widgets/Dialogs/VictoryDialog.vala
+
+src/Widgets/DemoGame.vala
+src/Widgets/GameplayStatistics.vala
+src/Widgets/HeaderBar.vala
+src/Widgets/Rules.vala

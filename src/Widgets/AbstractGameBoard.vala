@@ -1,37 +1,22 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
+public abstract class PaintSpill.Widgets.AbstractGameBoard : Gtk.Grid {
 
     // TODO: Add some sort of border around the grid
 
-    public Flood.Models.Difficulty difficulty { get; construct set; }
-    public Flood.Models.Color current_color { get; set; }
+    public PaintSpill.Models.Difficulty difficulty { get; construct set; }
+    public PaintSpill.Models.Color current_color { get; set; }
     public int moves_remaining { get; set; }
 
     private int num_rows;
     private int num_cols;
     public bool is_game_in_progress { get; set; }
+    public bool is_zen_mode_enabled { get; set; }
 
-    public Gee.List<Flood.Widgets.Square> squares { get; construct; }
+    public Gee.List<PaintSpill.Widgets.Square> squares { get; construct; }
     private Gee.List<int> flooded_indices;
 
     protected AbstractGameBoard () {
@@ -45,7 +30,7 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
     }
 
     construct {
-        squares = new Gee.ArrayList<Flood.Widgets.Square> ();
+        squares = new Gee.ArrayList<PaintSpill.Widgets.Square> ();
         flooded_indices = new Gee.ArrayList<int> ();
 
         initialize ();
@@ -61,14 +46,16 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
     protected abstract void on_new_game (bool should_record_loss);
 
     public bool can_safely_start_new_game () {
-        return !is_game_in_progress;
+        return !is_game_in_progress || is_zen_mode_enabled;
     }
 
     private void initialize () {
+        is_zen_mode_enabled = PaintSpill.Application.settings.get_boolean ("zen-mode");
+
         flooded_indices.clear ();
 
         moves_remaining = should_restore_state ()
-                ? Flood.Application.settings.get_int ("moves-remaining")
+                ? PaintSpill.Application.settings.get_int ("moves-remaining")
                 : difficulty.get_num_moves ();
         num_rows = difficulty.get_num_rows ();
         num_cols = difficulty.get_num_cols ();
@@ -94,15 +81,15 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
             margin = 8
         };
 
-        string[]? restored_state = should_restore_state ? Flood.Application.settings.get_string ("board-state").split (",") : null;
+        string[]? restored_state = should_restore_state ? PaintSpill.Application.settings.get_string ("board-state").split (",") : null;
         for (int row = 0; row < num_rows; row++) {
             for (int col = 0; col < num_cols; col++) {
                 int index = index_for_coord (row, col);
-                Flood.Widgets.Square square;
+                PaintSpill.Widgets.Square square;
                 if (restored_state == null) {
-                    square = new Flood.Widgets.Square (Flood.Models.Color.get_random (), difficulty.get_square_size ());
+                    square = new PaintSpill.Widgets.Square (PaintSpill.Models.Color.get_random (), difficulty.get_square_size ());
                 } else {
-                    square = new Flood.Widgets.Square (Flood.Models.Color.get_value_by_name (restored_state[index]), difficulty.get_square_size ());
+                    square = new PaintSpill.Widgets.Square (PaintSpill.Models.Color.get_value_by_name (restored_state[index]), difficulty.get_square_size ());
                 }
                 squares.insert (index, square);
                 square_grid.attach (square, col, row);
@@ -118,7 +105,7 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
         }
     }
 
-    public void flood (Flood.Models.Color new_color) {
+    public void flood (PaintSpill.Models.Color new_color) {
         // If there wasn't a game in progress before, there is now
         is_game_in_progress = true;
 
@@ -137,7 +124,7 @@ public abstract class Flood.Widgets.AbstractGameBoard : Gtk.Grid {
             on_game_won ();
             return;
         }
-        if (moves_remaining == 0) {
+        if (!is_zen_mode_enabled && (moves_remaining == 0)) {
             on_game_lost ();
             return;
         }

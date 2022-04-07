@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.avojak.paint-spill package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.avojak.paint-spill\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-06 16:37-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Layouts/MainLayout.vala:55
+msgid "Moves Remaining:"
+msgstr ""
+
+#: src/Layouts/MainLayout.vala:200 src/Widgets/Dialogs/DefeatDialog.vala:12
+#: src/Widgets/Dialogs/DefeatDialog.vala:29
+msgid "Game Over"
+msgstr ""
+
+#: src/Models/Difficulty.vala:16
+msgid "Easy"
+msgstr ""
+
+#: src/Models/Difficulty.vala:18
+msgid "Normal"
+msgstr ""
+
+#: src/Models/Difficulty.vala:20
+msgid "Hard"
+msgstr ""
+
+#: src/Models/Difficulty.vala:22
+msgid "Demo"
+msgstr ""
+
+#: src/Models/Difficulty.vala:29
+#, c-format
+msgid "%s Difficulty"
+msgstr ""
+
+#: src/Models/Difficulty.vala:30
+#, c-format
+msgid "%ix%i grid, %i moves"
+msgstr ""
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:50
+#: src/Widgets/Dialogs/VictoryDialog.vala:42
+msgid "Would you like to play again?"
+msgstr ""
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:59
+#: src/Widgets/Dialogs/VictoryDialog.vala:48
+msgid "Not Now"
+msgstr ""
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:64
+#: src/Widgets/Dialogs/VictoryDialog.vala:53
+msgid "Play Again"
+msgstr ""
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:19
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:19
+msgid "Start a new game?"
+msgstr ""
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:20
+msgid ""
+"To change the difficulty you must start a new game. All progress on the "
+"current game will be lost, and the current game will be recorded as a loss."
+msgstr ""
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:22
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:22
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:22
+msgid "Cancel"
+msgstr ""
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:23
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:23
+msgid "Yes, Start New Game"
+msgstr ""
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:12
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:29
+msgid "Gameplay Statistics"
+msgstr ""
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:43
+#: src/Widgets/Dialogs/RulesDialog.vala:38
+msgid "Close"
+msgstr ""
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:47
+msgid "Reset…"
+msgstr ""
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:48
+msgid "Reset Gameplay Statistics"
+msgstr ""
+
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:20
+msgid ""
+"All progress will be lost, and the current game will be recorded as a loss."
+msgstr ""
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:19
+msgid "Reset gameplay statistics?"
+msgstr ""
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:20
+msgid "All gameplay history (including wins and losses) will be lost."
+msgstr ""
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:23
+msgid "Yes, Reset"
+msgstr ""
+
+#: src/Widgets/Dialogs/RulesDialog.vala:12
+#, c-format
+msgid "How to Play %s"
+msgstr ""
+
+#: src/Widgets/Dialogs/RulesDialog.vala:24
+msgid "How to Play"
+msgstr ""
+
+#: src/Widgets/Dialogs/VictoryDialog.vala:29
+msgid "You Win!"
+msgstr ""
+
+#: src/Widgets/DemoGame.vala:29
+msgid "Try It Again"
+msgstr ""
+
+#: src/Widgets/GameplayStatistics.vala:37
+msgid "Number of Games Played"
+msgstr ""
+
+#: src/Widgets/GameplayStatistics.vala:49
+msgid "Win Percent"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:22
+msgid "Menu"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:38
+msgid "Zen Mode"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:39 src/Widgets/HeaderBar.vala:40
+msgid "Unlimited moves, continuous games, no wins or losses"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:45
+msgid "New Game"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:55
+msgid "Gameplay Statistics…"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:58
+msgid "Help"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:68
+msgid "Quit"
+msgstr ""
+
+#: src/Widgets/Rules.vala:10
+msgid ""
+"Fill the board with all the same color paint before running out of moves!"
+msgstr ""
+
+#: src/Widgets/Rules.vala:11
+msgid ""
+"Click the round paint buttons to spill a new paint color onto the board "
+"starting in the top-left corner."
+msgstr ""
+
+#: src/Widgets/Rules.vala:12
+msgid "Newly adjacent squares of the same color add to the total filled space."
+msgstr ""
+
+#: src/Widgets/Rules.vala:15
+msgid "Try it out:"
+msgstr ""
+
+#: src/Widgets/Rules.vala:18
+msgid "Looking to relax?"
+msgstr ""
+
+#: src/Widgets/Rules.vala:19
+msgid "Try enabling Zen Mode from the menu!"
+msgstr ""

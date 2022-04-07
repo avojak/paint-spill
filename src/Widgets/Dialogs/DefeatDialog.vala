@@ -1,31 +1,15 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (https://avojak.com)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Widgets.Dialogs.DefeatDialog : Granite.Dialog {
+public class PaintSpill.Widgets.Dialogs.DefeatDialog : Granite.Dialog {
 
-    public DefeatDialog (Flood.Windows.MainWindow main_window) {
+    public DefeatDialog (PaintSpill.Windows.MainWindow main_window) {
         Object (
             deletable: false,
             resizable: false,
-            title: "Game Over",
+            title: _("Game Over"),
             transient_for: main_window,
             modal: true
         );
@@ -42,7 +26,7 @@ public class Flood.Widgets.Dialogs.DefeatDialog : Granite.Dialog {
             column_spacing = 10
         };
 
-        var header_title = new Gtk.Label ("Game Over") {
+        var header_title = new Gtk.Label (_("Game Over")) {
             halign = Gtk.Align.CENTER,
             hexpand = true,
             margin_end = 10
@@ -62,8 +46,8 @@ public class Flood.Widgets.Dialogs.DefeatDialog : Granite.Dialog {
             row_spacing = 8
         };
 
-        body_grid.attach (new Flood.Widgets.GameplayStatistics (), 0, 0);
-        body_grid.attach (new Gtk.Label ("Would you like to play again?") {
+        body_grid.attach (new PaintSpill.Widgets.GameplayStatistics (), 0, 0);
+        body_grid.attach (new Gtk.Label (_("Would you like to play again?")) {
             margin_top = 30,
             margin_bottom = 10
         }, 0, 1);

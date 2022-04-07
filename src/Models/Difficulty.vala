@@ -1,25 +1,9 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public enum Flood.Models.Difficulty {
+public enum PaintSpill.Models.Difficulty {
 
     EASY,
     NORMAL,
@@ -42,7 +26,9 @@ public enum Flood.Models.Difficulty {
     }
 
     public string get_details_markup () {
-        return _("%s Difficulty\n<small>%ix%i grid, %i moves</small>".printf (get_display_string (), get_num_rows (), get_num_cols (), get_num_moves ()));
+        var fullname = _("%s Difficulty").printf (get_display_string ());
+        var details = _("%ix%i grid, %i moves").printf (get_num_rows (), get_num_cols (), get_num_moves ());
+        return @"$fullname\n<small>$details</small>";
     }
 
     public int get_num_rows () {

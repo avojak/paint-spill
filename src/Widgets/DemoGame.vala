@@ -1,25 +1,9 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Widgets.DemoGame : Gtk.Grid {
+public class PaintSpill.Widgets.DemoGame : Gtk.Grid {
 
     private static Gtk.CssProvider provider;
 
@@ -32,7 +16,7 @@ public class Flood.Widgets.DemoGame : Gtk.Grid {
 
     static construct {
         provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("com/github/avojak/flood/ArrowIcon.css");
+        provider.load_from_resource ("com/github/avojak/paint-spill/ArrowIcon.css");
     }
 
     construct {
@@ -43,7 +27,8 @@ public class Flood.Widgets.DemoGame : Gtk.Grid {
             row_spacing = 8
         };
         var reset_button = new Gtk.Button.with_label (_("Try It Again"));
-        var endgame_label = new Gtk.Label (_("🎉️ Great Job!"));
+        var win_text = "Great Job!";
+        var endgame_label = new Gtk.Label (@"🎉️ $win_text");
         endgame_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
         endgame_grid.attach (endgame_label, 0, 0);
         endgame_grid.attach (reset_button, 0, 1);
@@ -53,12 +38,6 @@ public class Flood.Widgets.DemoGame : Gtk.Grid {
         };
         revealer.add (endgame_grid);
 
-        //  var arrow_grid = new Gtk.Grid () {
-        //      vexpand = true,
-        //      expand = false,
-        //      valign = Gtk.Align.START,
-        //      margin_top = 12
-        //  };
         var arrow_icon = new Gtk.Image () {
             gicon = new ThemedIcon ("go-next"),
             pixel_size = 24,
@@ -69,9 +48,8 @@ public class Flood.Widgets.DemoGame : Gtk.Grid {
         };
         arrow_icon.get_style_context ().add_class ("arrow-icon");
         arrow_icon.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        //  arrow_grid.attach (arrow_icon, 0, 0);
 
-        var game_board = new Flood.Widgets.DemoGameBoard ();
+        var game_board = new PaintSpill.Widgets.DemoGameBoard ();
 
         var overlay = new Gtk.Overlay () {
             expand = true,
@@ -80,9 +58,7 @@ public class Flood.Widgets.DemoGame : Gtk.Grid {
         overlay.add (game_board);
         overlay.add_overlay (arrow_icon);
 
-        //  grid.attach (game_board, 1, 0);
-
-        var control_panel = new Flood.Widgets.ColorControlPanel (50);
+        var control_panel = new PaintSpill.Widgets.ColorControlPanel (50);
         control_panel.current_color = game_board.current_color;
 
         attach (overlay, 0, 0);

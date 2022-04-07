@@ -8,4 +8,4 @@ fi
 if [[ "$1" == "--inspect" ]]; then
     EXTRA_ARGS="--command=sh --devel"
 fi
-flatpak run --env=G_MESSAGES_DEBUG=all $EXTRA_ARGS com.github.avojak.flood ${@:2}
+flatpak run --env=G_MESSAGES_DEBUG=all $EXTRA_ARGS com.github.avojak.paint-spill ${@:2}

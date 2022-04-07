@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/avojak/flood">
+  <gresource prefix="/com/github/avojak/paint-spill">
     <file alias="ArrowIcon.css" compressed="true">styles/ArrowIcon.css</file>
   </gresource>
 </gresources>

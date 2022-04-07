@@ -1,25 +1,9 @@
 /*
- * Copyright (c) 2022 Andrew Vojak (avojak)
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301 USA
- *
- * Authored by: Andrew Vojak <andrew.vojak@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Andrew Vojak <andrew.vojak@gmail.com>
  */
 
-public class Flood.Widgets.HeaderBar : Hdy.HeaderBar {
+public class PaintSpill.Widgets.HeaderBar : Hdy.HeaderBar {
 
     public HeaderBar () {
         Object (
@@ -44,43 +28,49 @@ public class Flood.Widgets.HeaderBar : Hdy.HeaderBar {
             margin = 12
         };
         difficulty_button.mode_added.connect ((index, widget) => {
-            widget.set_tooltip_markup (((Flood.Models.Difficulty) index).get_details_markup ());
+            widget.set_tooltip_markup (((PaintSpill.Models.Difficulty) index).get_details_markup ());
         });
-        difficulty_button.append_text (Flood.Models.Difficulty.EASY.get_display_string ());
-        difficulty_button.append_text (Flood.Models.Difficulty.NORMAL.get_display_string ());
-        difficulty_button.append_text (Flood.Models.Difficulty.HARD.get_display_string ());
-        Flood.Application.settings.bind ("difficulty", difficulty_button, "selected", GLib.SettingsBindFlags.DEFAULT);
+        difficulty_button.append_text (PaintSpill.Models.Difficulty.EASY.get_display_string ());
+        difficulty_button.append_text (PaintSpill.Models.Difficulty.NORMAL.get_display_string ());
+        difficulty_button.append_text (PaintSpill.Models.Difficulty.HARD.get_display_string ());
+        PaintSpill.Application.settings.bind ("difficulty", difficulty_button, "selected", GLib.SettingsBindFlags.DEFAULT);
+
+        var zen_mode_button = new Granite.SwitchModelButton (_("Zen Mode")) {
+            description = _("Unlimited moves, continuous games, no wins or losses"),
+            tooltip_text = _("Unlimited moves, continuous games, no wins or losses")
+        };
+        PaintSpill.Application.settings.bind ("zen-mode", zen_mode_button, "active", GLib.SettingsBindFlags.DEFAULT);
 
         var new_game_accellabel = new Granite.AccelLabel.from_action_name (
             _("New Game"),
-            Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_NEW_GAME
+            PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_NEW_GAME
         );
 
         var new_game_menu_item = new Gtk.ModelButton ();
-        new_game_menu_item.action_name = Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_NEW_GAME;
+        new_game_menu_item.action_name = PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_NEW_GAME;
         new_game_menu_item.get_child ().destroy ();
         new_game_menu_item.add (new_game_accellabel);
 
         var gameplay_stats_menu_item = new Gtk.ModelButton ();
-        gameplay_stats_menu_item.text = "Gameplay Statistics…";
+        gameplay_stats_menu_item.text = _("Gameplay Statistics…");
 
         var help_accellabel = new Granite.AccelLabel.from_action_name (
             _("Help"),
-            Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_HELP
+            PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_HELP
         );
 
         var help_menu_item = new Gtk.ModelButton ();
-        help_menu_item.action_name = Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_HELP;
+        help_menu_item.action_name = PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_HELP;
         help_menu_item.get_child ().destroy ();
         help_menu_item.add (help_accellabel);
 
         var quit_accellabel = new Granite.AccelLabel.from_action_name (
             _("Quit"),
-            Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_QUIT
+            PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_QUIT
         );
 
         var quit_menu_item = new Gtk.ModelButton ();
-        quit_menu_item.action_name = Flood.Services.ActionManager.ACTION_PREFIX + Flood.Services.ActionManager.ACTION_QUIT;
+        quit_menu_item.action_name = PaintSpill.Services.ActionManager.ACTION_PREFIX + PaintSpill.Services.ActionManager.ACTION_QUIT;
         quit_menu_item.get_child ().destroy ();
         quit_menu_item.add (quit_accellabel);
 
@@ -91,12 +81,13 @@ public class Flood.Widgets.HeaderBar : Hdy.HeaderBar {
             width_request = 200
         };
         menu_popover_grid.attach (difficulty_button, 0, 0, 3, 1);
-        menu_popover_grid.attach (new_game_menu_item, 0, 1, 1, 1);
-        menu_popover_grid.attach (create_menu_separator (), 0, 2, 1, 1);
-        menu_popover_grid.attach (gameplay_stats_menu_item, 0, 3, 1, 1);
-        menu_popover_grid.attach (help_menu_item, 0, 4, 1, 1);
-        menu_popover_grid.attach (create_menu_separator (), 0, 5, 1, 1);
-        menu_popover_grid.attach (quit_menu_item, 0, 6, 1, 1);
+        menu_popover_grid.attach (zen_mode_button, 0, 1, 3, 1);
+        menu_popover_grid.attach (new_game_menu_item, 0, 2, 1, 1);
+        menu_popover_grid.attach (create_menu_separator (), 0, 3, 1, 1);
+        menu_popover_grid.attach (gameplay_stats_menu_item, 0, 4, 1, 1);
+        menu_popover_grid.attach (help_menu_item, 0, 5, 1, 1);
+        menu_popover_grid.attach (create_menu_separator (), 0, 6, 1, 1);
+        menu_popover_grid.attach (quit_menu_item, 0, 7, 1, 1);
         menu_popover_grid.show_all ();
 
         var menu_popover = new Gtk.Popover (null);
