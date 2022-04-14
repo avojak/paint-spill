@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=@name@
 GenericName=Puzzle Game
-Comment=Color-Filling Puzzle Game
+Comment=The color-filling puzzle game
 Categories=Game;
 Exec=@binary@
 Icon=@icon@
