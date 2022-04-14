@@ -13,7 +13,7 @@
 
 ## Fill the board with all the same color!
 
-The classic puzzle game, designed for elementary OS.
+The classic color-filling puzzle game, designed for elementary OS.
 
 | ![Screenshot](data/assets/screenshots/paint-spill-screenshot-01.png) | ![Screenshot](data/assets/screenshots/paint-spill-screenshot-02.png) | ![Screenshot](data/assets/screenshots/paint-spill-screenshot-03.png) |
 |------------------------------------------------------------------|------------------------------------------------------------------|------------------------------------------------------------------|
