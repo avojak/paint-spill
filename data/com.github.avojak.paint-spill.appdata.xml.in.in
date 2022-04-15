@@ -18,6 +18,11 @@
     <binary>@appid@</binary>
   </provides>
   <releases>
+    <release version="1.0.1" date="2022-04-15">
+      <description>
+        <p>Add AppCenter Stripe key</p>
+      </description>
+    </release>
     <release version="1.0.0" date="2022-04-14">
       <description>
         <p>Initial Release</p>
@@ -46,6 +51,6 @@
     <value key="x-appcenter-color-primary">#fff</value>
     <value key="x-appcenter-color-primary-text">#333</value>
     <value key="x-appcenter-suggested-price">1</value>
-    <value key="x-appcenter-stripe"><!-- TODO --></value>
+    <value key="x-appcenter-stripe">pk_live_51GeuzCC9Tk2ZlXfTZsLxgFKPcywdTZLl3uTVftcIPBentqPVDoXvxYuZzmSnwIF5vVKz55V1fzuJWjurkDDDD50D00JplG2LKn</value>
   </custom>
 </component>
