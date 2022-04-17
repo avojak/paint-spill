@@ -18,6 +18,11 @@
     <binary>@appid@</binary>
   </provides>
   <releases>
+    <release version="1.0.2" date="2022-04-16">
+      <description>
+        <p>Fix unnecessary network Flatpak sandbox hole</p>
+      </description>
+    </release>
     <release version="1.0.1" date="2022-04-15">
       <description>
         <p>Add AppCenter Stripe key</p>
