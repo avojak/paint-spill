@@ -7,9 +7,10 @@
   <img src="data/assets/paint-spill.svg" alt="Icon" />
 </p>
 <h1 align="center">Paint Spill</h1>
-<!-- <p align="center">
+<p align="center">
   <a href="https://appcenter.elementary.io/com.github.avojak.paint-spill"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
-</p> -->
+  <a href='https://flathub.org/apps/details/com.github.avojak.paint-spill'><img width='155' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+</p>
 
 ## Fill the board with all the same color!
 
@@ -20,10 +21,10 @@ The classic color-filling puzzle game, designed for elementary OS.
 
 ## Install with Flatpak
 
-Even if you are not on elementary OS, you can install Paint Spill from the elementary Flatpak repository:
+If you are not on elementary OS, you can install Paint Spill from Flathub:
 
 ```bash
-$ flatpak install https://flatpak.elementary.io/repo/appstream/com.github.avojak.paint-spill.flatpakref
+$ flatpak install flathub com.github.avojak.paint-spill
 ```
 
 ## Install from Source

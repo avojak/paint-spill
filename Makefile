@@ -12,7 +12,7 @@ all: translations flatpak
 
 init:
 	flatpak remote-add --if-not-exists --system appcenter https://flatpak.elementary.io/repo.flatpakrepo
-	flatpak install -y appcenter io.elementary.Platform io.elementary.Sdk
+	flatpak install -y appcenter io.elementary.Platform//6.1 io.elementary.Sdk//6.1
 
 flatpak:
 	flatpak-builder build $(APP_ID).yml --user --install --force-clean
