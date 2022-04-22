@@ -1,0 +1,210 @@
+# ITALIAN TRANSLATION FOR PAINT-SPILL.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.avojak.paint-spill package.
+# ALBANO BATTISTELLA <ALBANO_BATTISTELLA@HOTMAIL.COM>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.avojak.paint-spill\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-14 16:15-0600\n"
+"PO-Revision-Date: 2022-04-19 19:50+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Layouts/MainLayout.vala:55
+msgid "Moves Remaining:"
+msgstr "Mosse rimanenti:"
+
+#: src/Layouts/MainLayout.vala:200 src/Widgets/Dialogs/DefeatDialog.vala:12
+#: src/Widgets/Dialogs/DefeatDialog.vala:29
+msgid "Game Over"
+msgstr "Game Over"
+
+#: src/Models/Difficulty.vala:16
+msgid "Easy"
+msgstr "Facile"
+
+#: src/Models/Difficulty.vala:18
+msgid "Normal"
+msgstr "Normale"
+
+#: src/Models/Difficulty.vala:20
+msgid "Hard"
+msgstr "Difficile"
+
+#: src/Models/Difficulty.vala:22
+msgid "Demo"
+msgstr "Demo"
+
+#: src/Models/Difficulty.vala:29
+#, c-format
+msgid "%s Difficulty"
+msgstr "%s Difficoltà"
+
+#: src/Models/Difficulty.vala:30
+#, c-format
+msgid "%ix%i grid, %i moves"
+msgstr "%ix%i griglia, %i mosse"
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:50
+#: src/Widgets/Dialogs/VictoryDialog.vala:42
+msgid "Would you like to play again?"
+msgstr "Ti piacerebbe giocare di nuovo?"
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:59
+#: src/Widgets/Dialogs/VictoryDialog.vala:48
+msgid "Not Now"
+msgstr "Non adesso"
+
+#: src/Widgets/Dialogs/DefeatDialog.vala:64
+#: src/Widgets/Dialogs/VictoryDialog.vala:53
+msgid "Play Again"
+msgstr "Gioca di nuovo"
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:19
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:19
+msgid "Start a new game?"
+msgstr ""Iniziare una nuova partita?"
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:20
+msgid ""
+"To change the difficulty you must start a new game. All progress on the "
+"current game will be lost, and the current game will be recorded as a loss."
+msgstr ""
+"Per cambiare la difficoltà devi iniziare una nuova partita. Tutti i progressi sulla "
+"partita in corso andranno persi e la partita in corso verrà registrata come persa."
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:22
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:22
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:22
+msgid "Cancel"
+msgstr "Cancella"
+
+#: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:23
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:23
+msgid "Yes, Start New Game"
+msgstr "Sì, inizia una nuova partita"
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:12
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:29
+msgid "Gameplay Statistics"
+msgstr "Statistiche di gioco"
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:43
+#: src/Widgets/Dialogs/RulesDialog.vala:38
+msgid "Close"
+msgstr "Chiudi"
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:47
+msgid "Reset…"
+msgstr "Ripristina…"
+
+#: src/Widgets/Dialogs/GameplayStatisticsDialog.vala:48
+msgid "Reset Gameplay Statistics"
+msgstr "Ripristina le statistiche di gioco"
+
+#: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:20
+msgid ""
+"All progress will be lost, and the current game will be recorded as a loss."
+msgstr ""
+"Tutti i progressi andranno persi e la partita in corso verrà registrata come persa"
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:19
+msgid "Reset gameplay statistics?"
+msgstr "Ripristinare le statistiche di gioco?"
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:20
+msgid "All gameplay history (including wins and losses) will be lost."
+msgstr "Tutta la cronologia di gioco (incluse vittorie e sconfitte) andranno perse."
+
+#: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:23
+msgid "Yes, Reset"
+msgstr "Sì, ripristina"
+
+#: src/Widgets/Dialogs/RulesDialog.vala:12
+#, c-format
+msgid "How to Play %s"
+msgstr "Come giocare %s"
+
+#: src/Widgets/Dialogs/RulesDialog.vala:24
+msgid "How to Play"
+msgstr "Come giocare"
+
+#: src/Widgets/Dialogs/VictoryDialog.vala:29
+msgid "You Win!"
+msgstr "Hai vinto!"
+
+#: src/Widgets/DemoGame.vala:29
+msgid "Try It Again"
+msgstr "Prova di nuovo"
+
+#: src/Widgets/GameplayStatistics.vala:37
+msgid "Number of Games Played"
+msgstr "Numero di partite giocate"
+
+#: src/Widgets/GameplayStatistics.vala:49
+msgid "Win Percent"
+msgstr "Percentuale di vincita"
+
+#: src/Widgets/HeaderBar.vala:22
+msgid "Menu"
+msgstr "Menu"
+
+#: src/Widgets/HeaderBar.vala:38
+msgid "Zen Mode"
+msgstr ""
+
+#: src/Widgets/HeaderBar.vala:39 src/Widgets/HeaderBar.vala:40
+msgid "Unlimited moves, continuous games, no wins or losses"
+msgstr "Mosse illimitate, partite continue, nessuna vincita o sconfitta"
+
+#: src/Widgets/HeaderBar.vala:45
+msgid "New Game"
+msgstr "Nuovo gioco"
+
+#: src/Widgets/HeaderBar.vala:55
+msgid "Gameplay Statistics…"
+msgstr "Statistiche di gioco..."
+
+#: src/Widgets/HeaderBar.vala:58
+msgid "Help"
+msgstr "Aiuto"
+
+#: src/Widgets/HeaderBar.vala:68
+msgid "Quit"
+msgstr "Esci"
+
+#: src/Widgets/Rules.vala:10
+msgid ""
+"Fill the board with all the same color paint before running out of moves!"
+msgstr ""
+"Riempi la lavagna con tutta la vernice dello stesso colore prima di finire le mosse!"
+
+#: src/Widgets/Rules.vala:11
+msgid ""
+"Click the round paint buttons to spill a new paint color onto the board "
+"starting in the top-left corner."
+msgstr ""
+"Fai clic sui pulsanti di pittura rotondi per versare un nuovo colore di pittura sulla lavagna"
+"a partire dall'angolo in alto a sinistra."
+
+#: src/Widgets/Rules.vala:12
+msgid "Newly adjacent squares of the same color add to the total filled space."
+msgstr "I quadrati appena adiacenti dello stesso colore si aggiungono allo spazio totale riempito."
+
+#: src/Widgets/Rules.vala:15
+msgid "Try it out:"
+msgstr "Provalo:"
+
+#: src/Widgets/Rules.vala:18
+msgid "Looking to relax?"
+msgstr "Vuoi rilassarti?"
+
+#: src/Widgets/Rules.vala:19
+msgid "Try enabling Zen Mode from the menu!"
+msgstr "Prova ad abilitare la modalità Zen dal menu!"
