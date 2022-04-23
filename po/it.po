@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.avojak.paint-spill\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 16:15-0600\n"
+"POT-Creation-Date: 2022-04-23 09:43-0600\n"
 "PO-Revision-Date: 2022-04-19 19:50+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -69,15 +69,16 @@ msgstr "Gioca di nuovo"
 #: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:19
 #: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:19
 msgid "Start a new game?"
-msgstr ""Iniziare una nuova partita?"
+msgstr "Iniziare una nuova partita?"
 
 #: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:20
 msgid ""
 "To change the difficulty you must start a new game. All progress on the "
 "current game will be lost, and the current game will be recorded as a loss."
 msgstr ""
-"Per cambiare la difficoltà devi iniziare una nuova partita. Tutti i progressi sulla "
-"partita in corso andranno persi e la partita in corso verrà registrata come persa."
+"Per cambiare la difficoltà devi iniziare una nuova partita. Tutti i "
+"progressi sulla partita in corso andranno persi e la partita in corso verrà "
+"registrata come persa."
 
 #: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:22
 #: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:22
@@ -112,7 +113,8 @@ msgstr "Ripristina le statistiche di gioco"
 msgid ""
 "All progress will be lost, and the current game will be recorded as a loss."
 msgstr ""
-"Tutti i progressi andranno persi e la partita in corso verrà registrata come persa"
+"Tutti i progressi andranno persi e la partita in corso verrà registrata come "
+"persa"
 
 #: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:19
 msgid "Reset gameplay statistics?"
@@ -120,7 +122,8 @@ msgstr "Ripristinare le statistiche di gioco?"
 
 #: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:20
 msgid "All gameplay history (including wins and losses) will be lost."
-msgstr "Tutta la cronologia di gioco (incluse vittorie e sconfitte) andranno perse."
+msgstr ""
+"Tutta la cronologia di gioco (incluse vittorie e sconfitte) andranno perse."
 
 #: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:23
 msgid "Yes, Reset"
@@ -169,7 +172,7 @@ msgstr "Nuovo gioco"
 
 #: src/Widgets/HeaderBar.vala:55
 msgid "Gameplay Statistics…"
-msgstr "Statistiche di gioco..."
+msgstr "Statistiche di gioco…"
 
 #: src/Widgets/HeaderBar.vala:58
 msgid "Help"
@@ -183,19 +186,22 @@ msgstr "Esci"
 msgid ""
 "Fill the board with all the same color paint before running out of moves!"
 msgstr ""
-"Riempi la lavagna con tutta la vernice dello stesso colore prima di finire le mosse!"
+"Riempi la lavagna con tutta la vernice dello stesso colore prima di finire "
+"le mosse!"
 
 #: src/Widgets/Rules.vala:11
 msgid ""
 "Click the round paint buttons to spill a new paint color onto the board "
 "starting in the top-left corner."
 msgstr ""
-"Fai clic sui pulsanti di pittura rotondi per versare un nuovo colore di pittura sulla lavagna"
-"a partire dall'angolo in alto a sinistra."
+"Fai clic sui pulsanti di pittura rotondi per versare un nuovo colore di "
+"pittura sulla lavagnaa partire dall'angolo in alto a sinistra."
 
 #: src/Widgets/Rules.vala:12
 msgid "Newly adjacent squares of the same color add to the total filled space."
-msgstr "I quadrati appena adiacenti dello stesso colore si aggiungono allo spazio totale riempito."
+msgstr ""
+"I quadrati appena adiacenti dello stesso colore si aggiungono allo spazio "
+"totale riempito."
 
 #: src/Widgets/Rules.vala:15
 msgid "Try it out:"
