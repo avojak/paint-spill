@@ -18,6 +18,11 @@
     <binary>@appid@</binary>
   </provides>
   <releases>
+    <release version="1.1.0" date="2022-04-23">
+      <description>
+        <p>Italian translation by Albano Battistella (albanobattistella)</p>
+      </description>
+    </release>
     <release version="1.0.2" date="2022-04-16">
       <description>
         <p>Fix unnecessary network Flatpak sandbox hole</p>
