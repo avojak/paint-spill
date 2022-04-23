@@ -79,5 +79,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/avojak/paint-spill.git
-        tag: 1.0.1
-        commit: 95e9de3b3e5b551da22361f75c5016ab0cb0d6e7
+        tag: 1.1.0
+        commit: b39a770282c71c86d3cfbe4ecea6190fea288203
