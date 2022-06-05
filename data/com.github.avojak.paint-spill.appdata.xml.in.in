@@ -18,6 +18,14 @@
     <binary>@appid@</binary>
   </provides>
   <releases>
+    <release version="1.2.0" date="2022-06-04">
+      <description>
+        <p>1.2.0 Release</p>
+        <ul>
+          <li>Update to elementary OS 7 runtime</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2022-04-23">
       <description>
         <p>Italian translation by Albano Battistella (albanobattistella)</p>

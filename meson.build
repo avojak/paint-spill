@@ -1,5 +1,5 @@
 # Project name and programming language
-project('com.github.avojak.paint-spill', 'vala', 'c', version: '1.1.0')
+project('com.github.avojak.paint-spill', 'vala', 'c', version: '1.2.0')
 
 i18n = import('i18n')
 gnome = import('gnome')
