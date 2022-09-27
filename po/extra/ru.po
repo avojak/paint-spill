@@ -77,7 +77,7 @@ msgstr "Добавлен Stripe ключ для AppCenter"
 
 #: data/com.github.avojak.paint-spill.appdata.xml.in.in:46
 msgid "Initial Release"
-msgstr "Начальный  релиз"даун  пфывф
+msgstr "Начальный релиз"
 
 #: data/com.github.avojak.paint-spill.appdata.xml.in.in:61
 msgid "Andrew Vojak"
