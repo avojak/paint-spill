@@ -78,7 +78,7 @@ msgid ""
 "To change the difficulty you must start a new game. All progress on the "
 "current game will be lost, and the current game will be recorded as a loss."
 msgstr ""
-"Чтобы сменить сложность вы должны начать новую игра. Весь ваш прогресс в "
+"Чтобы сменить сложность, вы должны начать новую игра. Весь ваш прогресс в "
 "текущей игре будет потерян, а эта игра засчитается за проигрыш."
 
 #: src/Widgets/Dialogs/DifficultyChangeWarningDialog.vala:22
@@ -113,7 +113,7 @@ msgstr "Сброс статистики игры"
 #: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:20
 msgid ""
 "All progress will be lost, and the current game will be recorded as a loss."
-msgstr "Весь прогресс будет потерян, и текущая игра засчитается за проигрыш."
+msgstr "Весь прогресс будет потерян, а текущая игра засчитается за проигрыш."
 
 #: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:19
 msgid "Reset gameplay statistics?"
@@ -194,7 +194,7 @@ msgid ""
 "Click the round paint buttons to spill a new paint color onto the board "
 "starting in the top-left corner."
 msgstr ""
-"Нажмите круглую кнопку чтобы закрасить поле новым цветом, начиная с левого "
+"Нажмите круглую кнопку, чтобы закрасить поле новым цветом, начиная с левого "
 "верхнего угла."
 
 #: src/Widgets/Rules.vala:12
