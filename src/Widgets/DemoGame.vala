@@ -27,8 +27,7 @@ public class PaintSpill.Widgets.DemoGame : Gtk.Grid {
             row_spacing = 8
         };
         var reset_button = new Gtk.Button.with_label (_("Try It Again"));
-        var win_text = "Great Job!";
-        var endgame_label = new Gtk.Label (@"🎉️ $win_text");
+        var endgame_label = new Gtk.Label (_("🎉️ Great Job!"));
         endgame_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
         endgame_grid.attach (endgame_label, 0, 0);
         endgame_grid.attach (reset_button, 0, 1);

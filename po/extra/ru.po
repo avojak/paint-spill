@@ -46,7 +46,7 @@ msgstr "Три уровня сложности"
 
 #: data/com.github.avojak.paint-spill.appdata.xml.in.in:13
 msgid "\"Zen Mode\" for relaxing and uninterrupted play"
-msgstr "\"Режим Дзен\" для расслабления и непрерывный игры"
+msgstr "«Режим Дзен» для расслабления и непрерывный игры"
 
 #: data/com.github.avojak.paint-spill.appdata.xml.in.in:14
 msgid ""
