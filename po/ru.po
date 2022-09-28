@@ -29,15 +29,15 @@ msgstr "Игра окончена"
 
 #: src/Models/Difficulty.vala:16
 msgid "Easy"
-msgstr "Простая"
+msgstr "Простой"
 
 #: src/Models/Difficulty.vala:18
 msgid "Normal"
-msgstr "Нормальная"
+msgstr "Нормальный"
 
 #: src/Models/Difficulty.vala:20
 msgid "Hard"
-msgstr "Сложная"
+msgstr "Сложный"
 
 #: src/Models/Difficulty.vala:22
 msgid "Demo"
@@ -46,7 +46,7 @@ msgstr "Демо"
 #: src/Models/Difficulty.vala:29
 #, c-format
 msgid "%s Difficulty"
-msgstr "%s сложность"
+msgstr "%s режим"
 
 #: src/Models/Difficulty.vala:30
 #, c-format
@@ -113,7 +113,7 @@ msgstr "Сброс статистики игры"
 #: src/Widgets/Dialogs/NewGameConfirmationDialog.vala:20
 msgid ""
 "All progress will be lost, and the current game will be recorded as a loss."
-msgstr "Весь прогресс будет потерян, и текущая игра засчитается за проигрыш"
+msgstr "Весь прогресс будет потерян, и текущая игра засчитается за проигрыш."
 
 #: src/Widgets/Dialogs/ResetGameplayStatisticsWarningDialog.vala:19
 msgid "Reset gameplay statistics?"
@@ -187,7 +187,7 @@ msgstr "Выйти"
 #: src/Widgets/Rules.vala:10
 msgid ""
 "Fill the board with all the same color paint before running out of moves!"
-msgstr "Заполните доску одним цветом, пока не закончились ходы"
+msgstr "Заполните доску одним цветом, пока не закончились ходы!"
 
 #: src/Widgets/Rules.vala:11
 msgid ""
@@ -195,13 +195,13 @@ msgid ""
 "starting in the top-left corner."
 msgstr ""
 "Нажмите круглую кнопку чтобы закрасить поле новым цветом, начиная с левого "
-"верхнего угла"
+"верхнего угла."
 
 #: src/Widgets/Rules.vala:12
 msgid "Newly adjacent squares of the same color add to the total filled space."
 msgstr ""
 "Новые присоединившиеся квадраты того же цвета добавятся к общему "
-"заполненному пространству"
+"заполненному пространству."
 
 #: src/Widgets/Rules.vala:15
 msgid "Try it out:"
