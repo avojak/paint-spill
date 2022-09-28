@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-27 16:41+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.avojak.paint-spill.desktop.in.in:3
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:7
+msgid "@name@"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.desktop.in.in:4
+msgid "Puzzle Game"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.desktop.in.in:5
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:8
+msgid "The color-filling puzzle game"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.desktop.in.in:10
+msgid "Game;Puzzle;Color;"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:10
+msgid "Fill the board with all the same color!"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:12
+msgid "Three difficulty levels"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:13
+msgid "\"Zen Mode\" for relaxing and uninterrupted play"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:14
+msgid ""
+"Need a break? Close the game and automatically pick back up where you left "
+"off"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:23
+msgid "1.2.0 Release"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:25
+msgid "Update to elementary OS 7 runtime"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:31
+msgid "Italian translation by Albano Battistella (albanobattistella)"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:36
+msgid "Fix unnecessary network Flatpak sandbox hole"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:41
+msgid "Add AppCenter Stripe key"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:46
+msgid "Initial Release"
+msgstr ""
+
+#: data/com.github.avojak.paint-spill.appdata.xml.in.in:61
+msgid "Andrew Vojak"
+msgstr ""
