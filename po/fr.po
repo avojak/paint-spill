@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.avojak.paint-spill\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 09:43-0600\n"
+"POT-Creation-Date: 2022-09-28 15:31+0900\n"
 "PO-Revision-Date: 2022-06-16 13:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -147,6 +147,10 @@ msgstr "Vous avez gagné !"
 #: src/Widgets/DemoGame.vala:29
 msgid "Try It Again"
 msgstr "Réessayez"
+
+#: src/Widgets/DemoGame.vala:30
+msgid "🎉️ Great Job!"
+msgstr ""
 
 #: src/Widgets/GameplayStatistics.vala:37
 msgid "Number of Games Played"
